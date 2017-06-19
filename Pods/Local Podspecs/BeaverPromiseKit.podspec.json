@@ -1,0 +1,30 @@
+{
+  "name": "BeaverPromiseKit",
+  "version": "0.1.0",
+  "summary": "A delightful framework to build your iOS application",
+  "homepage": "https://github.com/trupin/Beaver",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Theophane Rupin": "theophane.rupin@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/trupin/Beaver.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0",
+    "osx": "10.10"
+  },
+  "source_files": "BeaverPromiseKit/**/*.swift",
+  "dependencies": {
+    "PromiseKit": [
+      "~> 4.1"
+    ],
+    "Beaver": [
+      "~> 0.1.0"
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+PODS:
+  - Alamofire (4.4.0)
+  - AlamofireImage (3.2.0):
+    - Alamofire (~> 4.1)
+  - Beaver (0.1.0)
+  - BeaverPromiseKit (0.1.0):
+    - Beaver (~> 0.1.0)
+    - PromiseKit (~> 4.1)
+  - Marshal (1.2.4)
+  - Nimble (7.0.0)
+  - PromiseKit (4.2.2):
+    - PromiseKit/Foundation (= 4.2.2)
+    - PromiseKit/QuartzCore (= 4.2.2)
+    - PromiseKit/UIKit (= 4.2.2)
+  - PromiseKit/Alamofire (4.2.2):
+    - Alamofire (~> 4.0)
+    - PromiseKit/CorePromise
+  - PromiseKit/CorePromise (4.2.2)
+  - PromiseKit/Foundation (4.2.2):
+    - PromiseKit/CorePromise
+  - PromiseKit/QuartzCore (4.2.2):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (4.2.2):
+    - PromiseKit/CorePromise
+  - Quick (1.1.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireImage
+  - Beaver (from `https://github.com/Beaver/Beaver`)
+  - BeaverPromiseKit (from `https://github.com/Beaver/Beaver`)
+  - Marshal
+  - Nimble
+  - PromiseKit/Alamofire
+  - Quick
+
+EXTERNAL SOURCES:
+  Beaver:
+    :git: https://github.com/Beaver/Beaver
+  BeaverPromiseKit:
+    :git: https://github.com/Beaver/Beaver
+
+CHECKOUT OPTIONS:
+  Beaver:
+    :commit: e910c26c1d20308555200016a7961cc8582138fd
+    :git: https://github.com/Beaver/Beaver
+  BeaverPromiseKit:
+    :commit: e910c26c1d20308555200016a7961cc8582138fd
+    :git: https://github.com/Beaver/Beaver
+
+SPEC CHECKSUMS:
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
+  Beaver: 4530c604526aebb38b0c3da61dc6a20e5ef742b4
+  BeaverPromiseKit: 36f15df4647fefaabd1b92becbf3a30f78a5195d
+  Marshal: 8e04e6624e506921db7143b0bfd83caee03f32d6
+  Nimble: 874982b605d4d752fcac6be695d13c502de84b1b
+  PromiseKit: 00e8886881f151c7e573d06b437915b0bb2970ec
+  Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
+
+PODFILE CHECKSUM: 858a2df41775e6e7938b033b59d0d6bd716909ae
+
+COCOAPODS: 1.2.1

@@ -1,0 +1,6 @@
+framework module BeaverPromiseKit {
+  umbrella header "BeaverPromiseKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
