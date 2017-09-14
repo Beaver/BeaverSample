@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		516DD4FCC377923ADDB27A82 /* HomeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD81CBDF4F0E06A427B9E /* HomeAction.swift */; };
-		516DD7C438C17825073E047A /* HomeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD5251BB0AB7A25EFCD0D /* HomeReducer.swift */; };
-		516DDAA5957895F893DA3E18 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD5E1A56E69C7C056789B /* HomeViewController.swift */; };
-		516DDD8956C0D564D3E9DAAA /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DD34FB02E7E2FAC304060 /* MovieCollectionViewCell.swift */; };
-		516DDE8D54CD8311647A5A73 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516DDFAC9AE2A783151FCDC9 /* HomePresenter.swift */; };
+		19E23E731F6A2F770004FDF0 /* HomeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E23E721F6A2F770004FDF0 /* HomeAction.swift */; };
+		19E23E751F6A30610004FDF0 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E23E741F6A30610004FDF0 /* HomePresenter.swift */; };
+		19E23E771F6A31EE0004FDF0 /* HomeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E23E761F6A31EE0004FDF0 /* HomeReducer.swift */; };
+		19E23E791F6A32BD0004FDF0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E23E781F6A32BD0004FDF0 /* HomeViewController.swift */; };
 		6A45D5A23DE36BD32DFDCCB8 /* Pods_HomeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA48B1DB878BD6F8EB5CB9C7 /* Pods_HomeTests.framework */; };
 		76FF52B51EF80C8D00288789 /* Home.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76FF52AB1EF80C8C00288789 /* Home.framework */; };
 		76FF52BA1EF80C8D00288789 /* HomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FF52B91EF80C8D00288789 /* HomeTests.swift */; };
@@ -32,12 +31,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19E23E721F6A2F770004FDF0 /* HomeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAction.swift; sourceTree = "<group>"; };
+		19E23E741F6A30610004FDF0 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		19E23E761F6A31EE0004FDF0 /* HomeReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReducer.swift; sourceTree = "<group>"; };
+		19E23E781F6A32BD0004FDF0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4508FAEA5697D7E13969C559 /* Pods_ASample_Home.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ASample_Home.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		516DD34FB02E7E2FAC304060 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
-		516DD5251BB0AB7A25EFCD0D /* HomeReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeReducer.swift; sourceTree = "<group>"; };
-		516DD5E1A56E69C7C056789B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		516DD81CBDF4F0E06A427B9E /* HomeAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeAction.swift; sourceTree = "<group>"; };
-		516DDFAC9AE2A783151FCDC9 /* HomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		68EED4D35D8FA7FC3866883C /* Pods_Sample_Home.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sample_Home.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7317621287DDA7E7A58DA610 /* Pods-HomeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeTests.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-HomeTests/Pods-HomeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		76FF52AB1EF80C8C00288789 /* Home.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Home.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,15 +89,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		516DD7E52CF93A66F9EF2A14 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				516DD34FB02E7E2FAC304060 /* MovieCollectionViewCell.swift */,
-				516DD5E1A56E69C7C056789B /* HomeViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		54177EB81BB3888E8C26ECB9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,10 +127,10 @@
 			children = (
 				76FF52AE1EF80C8C00288789 /* Home.h */,
 				76FF52AF1EF80C8C00288789 /* Info.plist */,
-				516DDFAC9AE2A783151FCDC9 /* HomePresenter.swift */,
-				516DD81CBDF4F0E06A427B9E /* HomeAction.swift */,
-				516DD5251BB0AB7A25EFCD0D /* HomeReducer.swift */,
-				516DD7E52CF93A66F9EF2A14 /* View */,
+				19E23E721F6A2F770004FDF0 /* HomeAction.swift */,
+				19E23E741F6A30610004FDF0 /* HomePresenter.swift */,
+				19E23E761F6A31EE0004FDF0 /* HomeReducer.swift */,
+				19E23E781F6A32BD0004FDF0 /* HomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -222,6 +211,7 @@
 				TargetAttributes = {
 					76FF52AA1EF80C8C00288789 = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					76FF52B31EF80C8D00288789 = {
@@ -348,11 +338,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				516DDE8D54CD8311647A5A73 /* HomePresenter.swift in Sources */,
-				516DD4FCC377923ADDB27A82 /* HomeAction.swift in Sources */,
-				516DD7C438C17825073E047A /* HomeReducer.swift in Sources */,
-				516DDD8956C0D564D3E9DAAA /* MovieCollectionViewCell.swift in Sources */,
-				516DDAA5957895F893DA3E18 /* HomeViewController.swift in Sources */,
+				19E23E731F6A2F770004FDF0 /* HomeAction.swift in Sources */,
+				19E23E751F6A30610004FDF0 /* HomePresenter.swift in Sources */,
+				19E23E771F6A31EE0004FDF0 /* HomeReducer.swift in Sources */,
+				19E23E791F6A32BD0004FDF0 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +469,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C6AE88864152B8A8C48C812E /* Pods-ASample-Home.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -491,6 +481,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.beaver.Home;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -499,6 +490,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 933CFF31A47A84B3263D50A2 /* Pods-ASample-Home.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -518,6 +510,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7317621287DDA7E7A58DA610 /* Pods-HomeTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = HomeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.beaver.HomeTests;
@@ -530,6 +523,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D6686C5ED7C1B346103BF7FB /* Pods-HomeTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = HomeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.beaver.HomeTests;

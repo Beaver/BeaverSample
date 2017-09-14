@@ -3,7 +3,12 @@ import Beaver
 public struct AppState: State {
     // MARK: - Attributes
 
-    var homeState: HomeState?
+    public var homeState: HomeState?
+    
+    // MARK: - Init
+    
+    public init() {
+    }
 
     // MARK: - Equatable
 

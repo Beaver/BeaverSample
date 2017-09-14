@@ -23,7 +23,7 @@ extension Page: Unmarshaling {
 }
 
 extension Page {
-    public static func get<Resource: Unmarshaling>(at id: Int = 1, from request: Request<Page<Resource>>) -> Request<Page<Resource>> {
+    public static func get<Resource>(at id: Int = 1, from request: Request<Page<Resource>>) -> Request<Page<Resource>> {
         var mutableParameters = request.parameters ?? [:]
         mutableParameters["page"] = id
 
@@ -33,12 +33,12 @@ extension Page {
                        parser: Page<Resource>.parseJSON)
     }
 
-    public static func get<Resource: Unmarshaling>(after page: Page<Resource>, from request: Request<Page<Resource>>) -> Request<Page<Resource>> {
+    public static func get<Resource>(after page: Page<Resource>, from request: Request<Page<Resource>>) -> Request<Page<Resource>> {
         let id = page.id + 1
         return get(at: id > page.pageCount ? page.pageCount : id, from: request)
     }
 
-    public static func get<Resource: Unmarshaling>(before page: Page<Resource>, from request: Request<Page<Resource>>) -> Request<Page<Resource>> {
+    public static func get<Resource>(before page: Page<Resource>, from request: Request<Page<Resource>>) -> Request<Page<Resource>> {
         let id = page.id - 1
         return get(at: id <= 0 ? 1 : id, from: request)
     }
