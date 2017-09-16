@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		06C890354F814C533564CD5F /* Pods_ASample_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F5B58BD70924CE0D8FAD74C /* Pods_ASample_Sample.framework */; };
-		19E23E7B1F6A36650004FDF0 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E23E7A1F6A36650004FDF0 /* AppAction.swift */; };
+		191E1BBF1F6CDB33009C505A /* MovieCard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191E1BBE1F6CDB33009C505A /* MovieCard.framework */; };
+		191E1BC01F6CDB33009C505A /* MovieCard.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 191E1BBE1F6CDB33009C505A /* MovieCard.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		19E23E7D1F6A369F0004FDF0 /* AppPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E23E7C1F6A369F0004FDF0 /* AppPresenter.swift */; };
 		19E23E7F1F6A37BB0004FDF0 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E23E7E1F6A37BB0004FDF0 /* AppReducer.swift */; };
 		6E702953EF5C1443F7483333 /* Pods_SampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E8975D53417475E4FA4A2B /* Pods_SampleTests.framework */; };
@@ -43,6 +44,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				76FF53941EF8326300288789 /* API.framework in Embed Frameworks */,
+				191E1BC01F6CDB33009C505A /* MovieCard.framework in Embed Frameworks */,
 				76FF539A1EF8326D00288789 /* Core.framework in Embed Frameworks */,
 				76FF53971EF8326900288789 /* Home.framework in Embed Frameworks */,
 			);
@@ -52,7 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		19E23E7A1F6A36650004FDF0 /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
+		191E1BBE1F6CDB33009C505A /* MovieCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MovieCard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19E23E7C1F6A369F0004FDF0 /* AppPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPresenter.swift; sourceTree = "<group>"; };
 		19E23E7E1F6A37BB0004FDF0 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		2AD8CFC8B0236D720EA637BF /* Pods-SampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SampleTests/Pods-SampleTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				06C890354F814C533564CD5F /* Pods_ASample_Sample.framework in Frameworks */,
 				76FF53931EF8326300288789 /* API.framework in Frameworks */,
 				76FF53961EF8326900288789 /* Home.framework in Frameworks */,
+				191E1BBF1F6CDB33009C505A /* MovieCard.framework in Frameworks */,
 				76FF53991EF8326D00288789 /* Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +134,7 @@
 		76FF52201EF8023800288789 = {
 			isa = PBXGroup;
 			children = (
+				191E1BBE1F6CDB33009C505A /* MovieCard.framework */,
 				76FF53981EF8326D00288789 /* Core.framework */,
 				76FF53951EF8326900288789 /* Home.framework */,
 				76FF53921EF8326300288789 /* API.framework */,
@@ -159,7 +163,6 @@
 				76FF52331EF8023800288789 /* Assets.xcassets */,
 				76FF52351EF8023800288789 /* LaunchScreen.storyboard */,
 				76FF52381EF8023800288789 /* Info.plist */,
-				19E23E7A1F6A36650004FDF0 /* AppAction.swift */,
 				19E23E7C1F6A369F0004FDF0 /* AppPresenter.swift */,
 				19E23E7E1F6A37BB0004FDF0 /* AppReducer.swift */,
 			);
@@ -287,9 +290,22 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ASample-Sample/Pods-ASample-Sample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Beaver/Beaver.framework",
+				"${BUILT_PRODUCTS_DIR}/BeaverPromiseKit/BeaverPromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Marshal/Marshal.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit.common-Alamofire/PromiseKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Beaver.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BeaverPromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Marshal.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -302,9 +318,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SampleTests/Pods-SampleTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -332,13 +353,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SampleTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		ED380293B548A6CA8FAD500B /* [CP] Check Pods Manifest.lock */ = {
@@ -347,13 +371,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ASample-Sample-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EF3E47E3087CE45948FAA715 /* [CP] Copy Pods Resources */ = {
@@ -379,7 +406,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				19E23E7D1F6A369F0004FDF0 /* AppPresenter.swift in Sources */,
-				19E23E7B1F6A36650004FDF0 /* AppAction.swift in Sources */,
 				76FF522D1EF8023800288789 /* AppDelegate.swift in Sources */,
 				19E23E7F1F6A37BB0004FDF0 /* AppReducer.swift in Sources */,
 			);
@@ -470,6 +496,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -513,6 +540,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

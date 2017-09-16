@@ -13,8 +13,6 @@ public final class HomePresenter: Presenting, ChildStoring {
                 context: Context) {
         self.store = store
         self.context = context
-        
-        subscribe()
     }
 }
 
@@ -22,14 +20,20 @@ public final class HomePresenter: Presenting, ChildStoring {
 
 extension HomePresenter {
     public func stateDidUpdate(oldState: HomeState?, newState: HomeState, completion: @escaping () -> ()) {
-        switch (oldState?.currentStage ?? .none, newState.currentStage) {
+        switch (oldState?.currentController ?? .none, newState.currentController) {
         case (.none, .main):
             context.present(controller: HomeViewController(store: store), completion: completion)
+            
+        case (.main, .movieCard(let id, let title)):
+            dispatch(AppAction.start(withFirstAction: MovieCardRoutingAction.start(id: id, title: title)))
+            completion()
+            
+        case (.movieCard, .main):
+            completion()
+            
         default:
             fatalError("Impossible state update")
         }
-        
-        completion()
     }
 }
 

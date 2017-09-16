@@ -6,5 +6,5 @@ enum HomeUIAction: HomeAction {
     case didPullToRefresh
     case didScrollToBottom
     case didViewAppear
-    case didTapOnMovieCell(id: Int, title: String, imageURL: String, overview: String)
+    case didTapOnMovieCell(id: Int, title: String)
 }

@@ -17,17 +17,12 @@ public enum HomeRoutingAction: HomeAction {
     case stop
 }
 
-public protocol ChildReducing: Reducing {
-    associatedtype ActionType
-    
-    func handle(action: ActionType, state: StateType, completion: @escaping (StateType) -> ()) -> StateType
+// MARK: - MovieCard Actions
+
+public protocol MovieCardAction: Action {
 }
 
-extension ChildReducing {
-    public func handle(envelop: ActionEnvelop, state: StateType, completion: @escaping (StateType) -> ()) -> StateType {
-        guard let action = envelop.action as? ActionType else {
-            fatalError("Inconsistant action type")
-        }
-        return handle(action: action, state: state, completion: completion)
-    }
+public enum MovieCardRoutingAction: MovieCardAction {
+    case start(id: Int, title: String)
+    case stop
 }

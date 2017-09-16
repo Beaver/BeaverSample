@@ -16,4 +16,7 @@
    <FileRef
       location = "group:Module/Core/Core.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Module/MovieCard/MovieCard.xcodeproj">
+   </FileRef>
 </Workspace>

@@ -1,11 +1,13 @@
 import Beaver
 import Core
 import Home
+import MovieCard
 
 struct AppReducer: Reducing {
     typealias StateType = AppState
     
     let home: HomeReducer
+    let movieCard: MovieCardReducer
     
     func handle(envelop: ActionEnvelop,
                 state: AppState,
@@ -14,16 +16,25 @@ struct AppReducer: Reducing {
         
         switch envelop.action {
         case AppAction.start(let startAction):
-            return handle(envelop: envelop.update(action: startAction), state: AppState(), completion: completion)
+            return handle(envelop: envelop.update(action: startAction), state: newState, completion: completion)
             
-        case AppAction.stop(module: HomeRoutingAction.stop):
-            newState.homeState = nil
-            
-        case let action as HomeAction:
+        case is HomeAction:
             newState.homeState = home.handle(envelop: envelop, state: state.homeState ?? HomeState()) { homeState in
                 newState.homeState = homeState
                 completion(newState)
             }
+            
+        case AppAction.stop(withLastAction: HomeRoutingAction.stop):
+            newState.homeState = nil
+            
+        case is MovieCardAction:
+            newState.movieCardState = movieCard.handle(envelop: envelop, state: state.movieCardState ?? MovieCardState()) { movieCardState in
+                newState.movieCardState = movieCardState
+                completion(newState)
+            }
+            
+        case AppAction.stop(withLastAction: MovieCardRoutingAction.stop):
+            newState.movieCardState = nil
             
         default: break
         }

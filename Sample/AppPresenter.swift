@@ -1,9 +1,11 @@
 import Beaver
 import Core
 import Home
+import MovieCard
 
 final class ModulesContainer {
     var home: HomePresenter?
+    var movieCard: MovieCardPresenter?
 }
 
 final class AppPresenter: Presenting, Storing {
@@ -19,8 +21,6 @@ final class AppPresenter: Presenting, Storing {
          store: Store<AppState>) {
         self.store = store
         self.context = context
-
-        subscribe()
     }
 }
 
@@ -31,10 +31,13 @@ extension AppPresenter {
         window.makeKeyAndVisible()
         
         let context = NavigationContext(parent: WindowContext(window: window))
-        let store = Store<AppState>(initialState: state, middlewares: middlewares, reducer: AppReducer(home: HomeReducer()).reducer)
+        let reducer = AppReducer(home: HomeReducer(),
+                                 movieCard: MovieCardReducer()).reducer
+        let store = Store<AppState>(initialState: state, middlewares: middlewares, reducer: reducer)
         let presenter = AppPresenter(context: context, store: store)
         
-        presenter.dispatch(AppAction.start(module: HomeRoutingAction.start))
+        presenter.subscribe()        
+        presenter.dispatch(AppAction.start(withFirstAction: HomeRoutingAction.start), recipients: .emitter)
         
         return (window, presenter)
     }
@@ -54,6 +57,19 @@ extension AppPresenter {
         case (.some, .none):
             modules.home?.unsubscribe()
             modules.home = nil
+            
+        default: break
+        }
+        
+        switch (oldState?.movieCardState, newState.movieCardState) {
+        case (.none, .some):
+            let childStore = ChildStore(store: store) { $0.movieCardState }
+            modules.movieCard = MovieCardPresenter(store: childStore, context: context)
+            modules.movieCard?.subscribe()
+            
+        case (.some, .none):
+            modules.movieCard?.unsubscribe()
+            modules.movieCard = nil
             
         default: break
         }

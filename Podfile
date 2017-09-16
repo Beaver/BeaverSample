@@ -65,6 +65,17 @@ abstract_target 'ASample' do
     end
   end
 
+  target 'MovieCard' do
+    project 'Module/MovieCard/MovieCard.xcodeproj'
+
+    home_pods
+
+    target 'MovieCardTests' do
+      inherit! :search_paths
+
+      test_pods
+    end
+  end
 
   target 'API' do
     project 'Module/API/API.xcodeproj'
