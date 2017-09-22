@@ -8,10 +8,18 @@ public final class MovieCardPresenter: Presenting, ChildStoring {
     public var store: ChildStore<MovieCardState, AppState>
     public let context: Context
 
+    // MARK: - Init
+    
     public init(store: ChildStore<MovieCardState, AppState>,
                 context: Context) {
         self.store = store
         self.context = context
+    }
+    
+    deinit {
+        #if DEBUG
+            print("[\(self)] --- DEINIT ---")
+        #endif
     }
 }
 

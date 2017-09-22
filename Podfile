@@ -25,7 +25,6 @@ abstract_target 'ASample' do
   workspace 'Sample.xcworkspace'
 
   pod 'Beaver', :git => 'https://github.com/Beaver/Beaver'
-  pod 'BeaverPromiseKit', :git => 'https://github.com/Beaver/Beaver'
 
   target 'Sample' do
     project 'Sample.xcodeproj'

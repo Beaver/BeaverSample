@@ -1,34 +1,20 @@
 PODS:
-  - Alamofire (4.4.0)
-  - AlamofireImage (3.2.0):
-    - Alamofire (~> 4.1)
+  - Alamofire (4.5.1)
+  - AlamofireImage (3.3.0):
+    - Alamofire (~> 4.5)
   - Beaver (0.1.0)
-  - BeaverPromiseKit (0.1.0):
-    - Beaver (~> 0.1.0)
-    - PromiseKit (~> 4.1)
   - Marshal (1.2.4)
-  - Nimble (7.0.0)
-  - PromiseKit (4.2.2):
-    - PromiseKit/Foundation (= 4.2.2)
-    - PromiseKit/QuartzCore (= 4.2.2)
-    - PromiseKit/UIKit (= 4.2.2)
-  - PromiseKit/Alamofire (4.2.2):
+  - Nimble (7.0.1)
+  - PromiseKit/Alamofire (4.4.0):
     - Alamofire (~> 4.0)
     - PromiseKit/CorePromise
-  - PromiseKit/CorePromise (4.2.2)
-  - PromiseKit/Foundation (4.2.2):
-    - PromiseKit/CorePromise
-  - PromiseKit/QuartzCore (4.2.2):
-    - PromiseKit/CorePromise
-  - PromiseKit/UIKit (4.2.2):
-    - PromiseKit/CorePromise
+  - PromiseKit/CorePromise (4.4.0)
   - Quick (1.1.0)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
   - Beaver (from `https://github.com/Beaver/Beaver`)
-  - BeaverPromiseKit (from `https://github.com/Beaver/Beaver`)
   - Marshal
   - Nimble
   - PromiseKit/Alamofire
@@ -37,27 +23,21 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   Beaver:
     :git: https://github.com/Beaver/Beaver
-  BeaverPromiseKit:
-    :git: https://github.com/Beaver/Beaver
 
 CHECKOUT OPTIONS:
   Beaver:
-    :commit: 2aac6465d5f7763d33da0647ed8fc15e784ae6e1
-    :git: https://github.com/Beaver/Beaver
-  BeaverPromiseKit:
-    :commit: e910c26c1d20308555200016a7961cc8582138fd
+    :commit: 06fa2a5bde275ee620aeca383f080a86c1569245
     :git: https://github.com/Beaver/Beaver
 
 SPEC CHECKSUMS:
-  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
-  AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
-  Beaver: 4530c604526aebb38b0c3da61dc6a20e5ef742b4
-  BeaverPromiseKit: 36f15df4647fefaabd1b92becbf3a30f78a5195d
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
+  Beaver: 84f7a1e4cc56ca0008db4c4685dbbec6e051f190
   Marshal: 8e04e6624e506921db7143b0bfd83caee03f32d6
-  Nimble: 874982b605d4d752fcac6be695d13c502de84b1b
-  PromiseKit: 00e8886881f151c7e573d06b437915b0bb2970ec
+  Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
+  PromiseKit: ecf5fe92275d57ee77c9ede858af47a162e9b97e
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
 
-PODFILE CHECKSUM: 8c6295bd74e1b163ef8fbbed291048de8ed2c4c9
+PODFILE CHECKSUM: a7db3b3a27bc276a6232e3fb1bdc7314aa00893f
 
 COCOAPODS: 1.3.1

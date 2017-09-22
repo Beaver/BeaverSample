@@ -36,7 +36,7 @@ extension AppPresenter {
         let store = Store<AppState>(initialState: state, middlewares: middlewares, reducer: reducer)
         let presenter = AppPresenter(context: context, store: store)
         
-        presenter.subscribe()        
+        presenter.subscribe()
         presenter.dispatch(AppAction.start(withFirstAction: HomeRoutingAction.start), recipients: .emitter)
         
         return (window, presenter)
