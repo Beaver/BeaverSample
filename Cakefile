@@ -4,24 +4,24 @@ PRODUCT_NAME = "BeaverSample"
 COMPANY_IDENTIFIER = "com.beaver"
 
 project do |p|
-	p.name = "Sample"
-	p.organization = "Beaver"
+    p.name = "Sample"
+    p.organization = "Beaver"
 end
 
 def main_configuration(target, configuration, is_module=true)
-	configuration.product_bundle_identifier = COMPANY_IDENTIFIER + "." + target.name
-	configuration.settings["CODE_SIGN_IDENTITY[sdk=iphoneos*]"] = "iPhone Developer"
-	
-	if is_module
-	    configuration.settings["INFOPLIST_FILE"] = "Module/#{target.name}/#{target.name}/Info.plist"
-	else
-	    configuration.settings["INFOPLIST_FILE"] = "#{target.name}/Info.plist"
-	end
-	
+    configuration.product_bundle_identifier = COMPANY_IDENTIFIER + "." + target.name
+    configuration.settings["CODE_SIGN_IDENTITY[sdk=iphoneos*]"] = "iPhone Developer"
+
+    if is_module
+        configuration.settings["INFOPLIST_FILE"] = "Module/#{target.name}/#{target.name}/Info.plist"
+    else
+        configuration.settings["INFOPLIST_FILE"] = "#{target.name}/Info.plist"
+    end
+
     configuration.settings["PRODUCT_NAME"] = PRODUCT_NAME
     configuration.settings["SWIFT_VERSION"] = CURRENT_SWIFT_VERSION
 
-	configuration.settings["SDKROOT"] = "iphoneos"
+    configuration.settings["SDKROOT"] = "iphoneos"
     configuration.settings["DEBUG_INFORMATION_FORMAT"] = "dwarf"
     configuration.settings["CODE_SIGN_IDENTITY[sdk=iphoneos*]"] = "iPhone Developer"
     configuration.settings["TARGETED_DEVICE_FAMILY"] = "1,2"
@@ -49,43 +49,43 @@ def main_configuration(target, configuration, is_module=true)
 end
 
 def module_target(name)
-	target do |target|
-		target.name = name
-		target.platform = :ios
-		target.deployment_target = DEPLOYMENT_TARGET
-		target.type = :framework
-		target.language = :swift
-		target.include_files = ["Module/#{target.name}/#{target.name}/**/*.*"]
-		target.exclude_files << "**/Info.plist"
+    target do |target|
+        target.name = name
+        target.platform = :ios
+        target.deployment_target = DEPLOYMENT_TARGET
+        target.type = :framework
+        target.language = :swift
+        target.include_files = ["Module/#{target.name}/#{target.name}/**/*.*"]
+        target.exclude_files << "**/Info.plist"
 
-		unit_tests_for target do |test_target|
-	        test_target.name = "#{target.name}Tests"
-	        test_target.include_files = ["Module/#{target.name}/#{target.name}Tests/**/*.*"]
-	    end
+        unit_tests_for target do |test_target|
+           test_target.name = "#{target.name}Tests"
+           test_target.include_files = ["Module/#{target.name}/#{target.name}Tests/**/*.*"]
+       end
 
-		target.all_configurations.each do |configuration|
-			main_configuration(target, configuration)
-	    end
-	end	
+       target.all_configurations.each do |configuration|
+        main_configuration(target, configuration)
+    end
+end	
 end
 
 application_for :ios, DEPLOYMENT_TARGET do |target|
-	target.name = "Sample"
-	target.language = :swift
-	target.include_files = ["Sample/**/*.*"]
+    target.name = "Sample"
+    target.language = :swift
+    target.include_files = ["Sample/**/*.*"]
 
-	target.linked_targets = [
-		module_target("Core"), 
-		module_target("API"),
-		module_target("Home"),
-		module_target("MovieCard")
-	]
+    target.linked_targets = [
+        module_target("Core"), 
+        module_target("API"),
+        module_target("Home"),
+        module_target("MovieCard")
+    ]
 
-	target.all_configurations.each do |configuration|
-		main_configuration(target, configuration, false)
+    target.all_configurations.each do |configuration|
+        main_configuration(target, configuration, false)
     end
 
-	unit_tests_for target do |test_target|
+    unit_tests_for target do |test_target|
         test_target.name = "SampleTests"
         test_target.include_files = ["SampleTests/**/*.*"]
     end
