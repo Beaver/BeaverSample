@@ -4,8 +4,8 @@ PRODUCT_NAME = "BeaverSample"
 COMPANY_IDENTIFIER = "com.beaver"
 
 project do |p|
-	p.name = "Sample"
-	p.organization = "Beaver"
+    p.name = "Sample"
+    p.organization = "Beaver"
 end
 
 def main_configuration(target, configuration, is_module=true)
