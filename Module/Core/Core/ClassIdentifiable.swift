@@ -1,3 +1,5 @@
+import UIKit
+
 public protocol ClassIdentifiable {
     static func identifier() -> String
 }

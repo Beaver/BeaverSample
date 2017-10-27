@@ -8,17 +8,13 @@ project do |p|
     p.organization = "Beaver"
 end
 
-def main_configuration(target, configuration, is_module=true)
+def main_configuration(target, configuration)
     configuration.product_bundle_identifier = COMPANY_IDENTIFIER + "." + target.name
     configuration.settings["CODE_SIGN_IDENTITY[sdk=iphoneos*]"] = "iPhone Developer"
 
-    if is_module
-        configuration.settings["INFOPLIST_FILE"] = "Module/#{target.name}/#{target.name}/Info.plist"
-    else
-        configuration.settings["INFOPLIST_FILE"] = "#{target.name}/Info.plist"
-    end
+    configuration.settings["INFOPLIST_FILE"] = "#{target.name}/Info.plist"
 
-    configuration.settings["PRODUCT_NAME"] = PRODUCT_NAME
+    configuration.settings["PRODUCT_NAME"] = "$(TARGET_NAME)"
     configuration.settings["SWIFT_VERSION"] = CURRENT_SWIFT_VERSION
 
     configuration.settings["SDKROOT"] = "iphoneos"
@@ -42,14 +38,16 @@ def main_configuration(target, configuration, is_module=true)
     configuration.settings["CLANG_WARN_SUSPICIOUS_MOVE"] = "YES"
     configuration.settings["ENABLE_STRICT_OBJC_MSGSEND"] = "YES"
 
+    configuration.settings["ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES"] = "$(inherited)"
+
     if configuration.name == "Release"
         configuration.settings["DEBUG_INFORMATION_FORMAT"] = "dwarf-with-dsym"
         configuration.settings["SWIFT_OPTIMIZATION_LEVEL"] = "-Owholemodule"
     end
 end
 
-def module_target(name)
-    target do |target|
+def module_target(name, linked_targets=[])
+    return target do |target|
         target.name = name
         target.platform = :ios
         target.deployment_target = DEPLOYMENT_TARGET
@@ -57,17 +55,33 @@ def module_target(name)
         target.language = :swift
         target.include_files = ["Module/#{target.name}/#{target.name}/**/*.*"]
         target.exclude_files << "**/Info.plist"
+        target.linked_targets = linked_targets
+        target.system_frameworks << "UIKit"
 
         unit_tests_for target do |test_target|
-           test_target.name = "#{target.name}Tests"
-           test_target.include_files = ["Module/#{target.name}/#{target.name}Tests/**/*.*"]
-       end
+            test_target.name = "#{target.name}Tests"
+            test_target.include_files = ["Module/#{target.name}/#{target.name}Tests/**/*.*"]
+            target.exclude_files << "**/Info.plist"
 
-       target.all_configurations.each do |configuration|
-        main_configuration(target, configuration)
-    end
-end	
+            test_target.all_configurations do |configuration|
+                main_configuration(test_target, configuration)
+                configuration.settings["INFOPLIST_FILE"] = "Module/#{target.name}/#{test_target.name}/Info.plist"
+                configuration.settings["CODE_SIGN_IDENTITY[sdk=iphoneos*]"] = ""
+            end
+        end
+
+        target.all_configurations.each do |configuration|
+            main_configuration(target, configuration)
+            configuration.settings["INFOPLIST_FILE"] = "Module/#{target.name}/#{target.name}/Info.plist"
+            configuration.settings["CODE_SIGN_IDENTITY[sdk=iphoneos*]"] = ""
+        end
+    end	
 end
+
+core_target = module_target("Core")
+api_target = module_target("API", [core_target])
+home_target = module_target("Home", [core_target, api_target])
+movie_card_target = module_target("MovieCard", [core_target, api_target])
 
 application_for :ios, DEPLOYMENT_TARGET do |target|
     target.name = "Sample"
@@ -75,19 +89,29 @@ application_for :ios, DEPLOYMENT_TARGET do |target|
     target.include_files = ["Sample/**/*.*"]
 
     target.linked_targets = [
-        module_target("Core"), 
-        module_target("API"),
-        module_target("Home"),
-        module_target("MovieCard")
+        core_target,
+        api_target,
+        home_target,
+        movie_card_target
     ]
 
     target.all_configurations.each do |configuration|
-        main_configuration(target, configuration, false)
+        main_configuration(target, configuration)
+
+        configuration.supported_devices = :universal
+
     end
 
     unit_tests_for target do |test_target|
         test_target.name = "SampleTests"
         test_target.include_files = ["SampleTests/**/*.*"]
+
+        test_target.all_configurations do |configuration|
+            main_configuration(target, configuration)
+            configuration.settings["INFOPLIST_FILE"] = "#{test_target.name}/Info.plist"
+            configuration.settings["DEFINES_MODULE"] = "YES"
+            configuration.settings["CODE_SIGN_IDENTITY[sdk=iphoneos*]"] = ""
+        end
     end
 end
 

@@ -27,8 +27,6 @@ abstract_target 'ASample' do
   pod 'Beaver', :git => 'https://github.com/Beaver/Beaver'
 
   target 'Sample' do
-    project 'Sample.xcodeproj'
-
     core_pods
     api_pods
     home_pods
@@ -41,8 +39,6 @@ abstract_target 'ASample' do
   end
 
   target 'Core' do
-    project 'Module/Core/Core.xcodeproj'
-
     core_pods
 
     target 'CoreTests' do
@@ -53,8 +49,6 @@ abstract_target 'ASample' do
   end
 
   target 'Home' do
-    project 'Module/Home/Home.xcodeproj'
-
     home_pods
 
     target 'HomeTests' do
@@ -65,8 +59,6 @@ abstract_target 'ASample' do
   end
 
   target 'MovieCard' do
-    project 'Module/MovieCard/MovieCard.xcodeproj'
-
     home_pods
 
     target 'MovieCardTests' do
@@ -77,8 +69,6 @@ abstract_target 'ASample' do
   end
 
   target 'API' do
-    project 'Module/API/API.xcodeproj'
-
     api_pods
 
     target 'APITests' do
