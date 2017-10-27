@@ -2,21 +2,21 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Sample.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:Module/API/API.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Module/Home/Home.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Module/Core/Core.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Module/Home/Home.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Module/MovieCard/MovieCard.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Sample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
