@@ -1,11 +1,12 @@
-# -- Global configuration -- 
+# -- Global configuration --
 
 $DEPLOYMENT_TARGET = 9.0
 $CURRENT_SWIFT_VERSION = 4.0
 $COMPANY_IDENTIFIER = "com.beaver"
+$ORGANIZATION = "Beaver"
 $CURRENT_PROJECT_VERSION = "1"
 
-# -- Utils -- 
+# -- Utils --
 
 MODULE_TARGETS = {}
 def module_target(name)
@@ -15,18 +16,20 @@ def module_target(name)
     MODULE_TARGETS[name]
 end
 
+def snakecase(str)
+    str.gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2')
+        .gsub(/([a-z\d])([A-Z])/,'\1_\2')
+        .tr('-', '_')
+        .gsub(/\s/, '_')
+        .gsub(/__+/, '_')
+        .downcase
+end
+
 def declare_module_targets
-    Dir["Module/*"].each { |module_path| 
+    Dir["Module/*"].each { |module_path|
         require "./#{module_path}/Cakefile"
-        # to snakecase
-        module_name = module_path.gsub("Module/", "")
-            .gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2')
-            .gsub(/([a-z\d])([A-Z])/,'\1_\2')
-            .tr('-', '_')
-            .gsub(/\s/, '_')
-            .gsub(/__+/, '_')
-            .downcase
-        module_target(module_name)
+        module_name = snakecase(module_path.gsub("Module/", ""))
+        module_target(module_name.to_sym)
     }
 end
 
@@ -61,19 +64,19 @@ def main_configuration(target, configuration)
     end
 end
 
-# -- Project definition -- 
+# -- Project definition --
 
 project do |p|
-    p.name = "Sample"
-    p.organization = "Beaver"
+    p.name = "App"
+    p.organization = $ORGANIZATION
 end
 
 declare_module_targets
 
 application_for :ios, $DEPLOYMENT_TARGET do |target|
-    target.name = "Sample"
+    target.name = "App"
     target.language = :swift
-    target.include_files = ["Sample/**/*.*"]
+    target.include_files = ["App/**/*.*"]
 
     target.linked_targets = MODULE_TARGETS.values
 
@@ -85,8 +88,8 @@ application_for :ios, $DEPLOYMENT_TARGET do |target|
     end
 
     unit_tests_for target do |test_target|
-        test_target.name = "SampleTests"
-        test_target.include_files = ["SampleTests/**/*.*"]
+        test_target.name = "AppTests"
+        test_target.include_files = ["AppTests/**/*.*"]
 
         test_target.all_configurations do |configuration|
             main_configuration(target, configuration)

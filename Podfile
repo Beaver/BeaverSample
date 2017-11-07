@@ -1,80 +1,59 @@
+# -- Utils --
+
+def snakecase(str)
+    str.gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2')
+        .gsub(/([a-z\d])([A-Z])/,'\1_\2')
+        .tr('-', '_')
+        .gsub(/\s/, '_')
+        .gsub(/__+/, '_')
+        .downcase
+end
+
+# -- Require modules --
+
+Dir["./Module/*/Podfile.rb"].each { |path|
+    require path
+}
+
+# -- Project configuration --
+
 platform :ios, '9.0'
 
 def test_pods
-  pod 'Quick'
-  pod 'Nimble'
+    pod 'Quick'
+    pod 'Nimble'
+
+    # Put your test dependencies here
 end
 
-def core_pods
-  pod 'Marshal'
+def app_pods
 end
 
-def api_pods
-  pod 'Marshal'
-  pod 'Alamofire'
-  pod 'PromiseKit/Alamofire'
-end
+abstract_target 'AbstractApp' do
+    use_frameworks!
+    workspace 'App.xcworkspace'
 
-def home_pods
-  pod 'Alamofire'
-  pod 'AlamofireImage'
-end
+    pod 'Beaver', :git => 'https://github.com/Beaver/Beaver'
 
-abstract_target 'ASample' do
-  use_frameworks!
-  workspace 'Sample.xcworkspace'
+    # Put your common dependencies here
 
-  pod 'Beaver', :git => 'https://github.com/Beaver/Beaver'
+    target 'App' do
+        # Modules pods declaration
+        Dir["Module/*"].each { |module_path|
+            module_name = snakecase(module_path.gsub("Module/", ""))
+            send("#{module_name}_pods")
+        }
 
-  target 'Sample' do
-    core_pods
-    api_pods
-    home_pods
+        target 'AppTests' do
+            inherit! :search_paths
 
-    target 'SampleTests' do
-      inherit! :search_paths
-
-      test_pods
+            test_pods
+        end
     end
-  end
 
-  target 'Core' do
-    core_pods
-
-    target 'CoreTests' do
-      inherit! :search_paths
-
-      test_pods
-    end
-  end
-
-  target 'Home' do
-    home_pods
-
-    target 'HomeTests' do
-      inherit! :search_paths
-
-      test_pods
-    end
-  end
-
-  target 'MovieCard' do
-    home_pods
-
-    target 'MovieCardTests' do
-      inherit! :search_paths
-
-      test_pods
-    end
-  end
-
-  target 'API' do
-    api_pods
-
-    target 'APITests' do
-      inherit! :search_paths
-
-      test_pods
-    end
-  end
+    # Module targets declaration
+    Dir["Module/*"].each { |module_path|
+        module_name = snakecase(module_path.gsub("Module/", ""))
+        send("#{module_name}_target")
+    }
 end
