@@ -1,0 +1,43 @@
+PODS:
+  - Alamofire (4.5.1)
+  - AlamofireImage (3.3.0):
+    - Alamofire (~> 4.5)
+  - Beaver (0.1.0)
+  - Marshal (1.2.4)
+  - Nimble (7.0.2)
+  - PromiseKit/Alamofire (4.4.3):
+    - Alamofire (~> 4.0)
+    - PromiseKit/CorePromise
+  - PromiseKit/CorePromise (4.4.3)
+  - Quick (1.2.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireImage
+  - Beaver (from `https://github.com/Beaver/Beaver`)
+  - Marshal
+  - Nimble
+  - PromiseKit/Alamofire
+  - Quick
+
+EXTERNAL SOURCES:
+  Beaver:
+    :git: https://github.com/Beaver/Beaver
+
+CHECKOUT OPTIONS:
+  Beaver:
+    :commit: 584885829f2e35def63a5c8f53ecc30d58ef8434
+    :git: https://github.com/Beaver/Beaver
+
+SPEC CHECKSUMS:
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
+  Beaver: 84f7a1e4cc56ca0008db4c4685dbbec6e051f190
+  Marshal: 8e04e6624e506921db7143b0bfd83caee03f32d6
+  Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
+  PromiseKit: fbb52a0d154402c57eeb6eccd36dd7724fcf6117
+  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+
+PODFILE CHECKSUM: a4cd6ef37275e6d088957b34cd818ba0fdfacf5c
+
+COCOAPODS: 1.4.0.beta.1

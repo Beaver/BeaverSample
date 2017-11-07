@@ -1,5 +1,6 @@
 def home_pods
-    # Put your target dependencies here
+	pod 'Alamofire'
+	pod 'AlamofireImage'
 end
 
 def home_target

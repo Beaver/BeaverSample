@@ -1,13 +1,15 @@
-def core_pods
+def api_pods
 	pod 'Marshal'
+	pod 'Alamofire'
+	pod 'PromiseKit/Alamofire'
 end
 
-def core_target
-    target 'Core' do
+def api_target
+    target 'API' do
         
         core_pods
 
-        target 'CoreTests' do
+        target 'APITests' do
             inherit! :search_paths
 
             test_pods
