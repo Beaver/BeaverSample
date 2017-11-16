@@ -4,7 +4,16 @@ public struct MovieCardState: Beaver.State {
     public var error: String?
 
     public var currentScreen: CurrentScreen = .none
-
+    
+    public var title: String? {
+        switch currentScreen {
+        case .main(_, let title):
+            return title.uppercased()
+        default:
+            return nil
+        }
+    }
+    
     public init() {
     }
 }

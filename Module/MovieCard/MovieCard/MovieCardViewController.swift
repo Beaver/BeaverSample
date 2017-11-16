@@ -16,7 +16,7 @@ final class MovieCardViewController: Beaver.ViewController<MovieCardState, AppSt
 
         let label = UILabel(frame: view.bounds)
         label.textAlignment = .center
-        label.text = "Hello World!"
+        label.text = state.title
 
         view.addSubview(label)
     }
