@@ -1,0 +1,6 @@
+framework module Pods_AbstractApp_MovieCard {
+  umbrella header "Pods-AbstractApp-MovieCard-umbrella.h"
+
+  export *
+  module * { export * }
+}

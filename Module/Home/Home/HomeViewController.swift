@@ -1,8 +1,8 @@
 import Beaver
 import Core
 
-final class HomeViewController: ViewController<HomeState, AppState> {
-    lazy fileprivate var tableView: UITableView = {
+final class HomeViewController: Beaver.ViewController<HomeState, AppState> {
+    lazy private var tableView: UITableView = {
         let tableView = UITableView(frame: self.view.frame)
         tableView.delegate = self.dataSource
         tableView.dataSource = self.dataSource
@@ -11,7 +11,7 @@ final class HomeViewController: ViewController<HomeState, AppState> {
         return tableView
     }()
     
-    fileprivate lazy var dataSource: HomeViewControllerDataSource = {
+    private lazy var dataSource: HomeViewControllerDataSource = {
         let dataSource = HomeViewControllerDataSource()
         dataSource.weakController = self
         return dataSource
@@ -22,13 +22,13 @@ final class HomeViewController: ViewController<HomeState, AppState> {
 
         view.addSubview(tableView)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         dispatch(action: HomeUIAction.didViewAppear)
     }
-    
+        
     override func stateDidUpdate(oldState: HomeState?,
                                  newState: HomeState,
                                  completion: @escaping () -> ()) {

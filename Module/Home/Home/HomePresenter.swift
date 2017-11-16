@@ -1,14 +1,14 @@
 import Beaver
 import Core
-import API
 
-public final class HomePresenter: Presenting, ChildStoring {
+public final class HomePresenter: Beaver.Presenting, Beaver.ChildStoring {
     public typealias StateType = HomeState
     public typealias ParentStateType = AppState
-    
-    public var store: ChildStore<HomeState, AppState>
+
+    public let store: ChildStore<HomeState, AppState>
+
     public let context: Context
-    
+
     public init(store: ChildStore<HomeState, AppState>,
                 context: Context) {
         self.store = store
@@ -16,24 +16,25 @@ public final class HomePresenter: Presenting, ChildStoring {
     }
 }
 
-// MARK: - Subscribing
-
 extension HomePresenter {
-    public func stateDidUpdate(oldState: HomeState?, newState: HomeState, completion: @escaping () -> ()) {
-        switch (oldState?.currentController ?? .none, newState.currentController) {
+    public func stateDidUpdate(oldState: HomeState?,
+                               newState: HomeState,
+                               completion: @escaping () -> ()) {
+
+        switch (oldState?.currentScreen ?? .none, newState.currentScreen) {
         case (.none, .main):
-            context.present(controller: HomeViewController(store: store), completion: completion)
-            
+            let homeController = HomeViewController(store: store)
+            context.present(controller: homeController, completion: completion)
+
+        case (.main, .none):
+            context.dismiss(completion: completion)
+        
         case (.main, .movieCard(let id, let title)):
-            dispatch(AppAction.start(withFirstAction: MovieCardRoutingAction.start(id: id, title: title)))
+            dispatch(AppAction.start(module: MovieCardRoutingAction.start(id: id, title: title)))
             completion()
-            
-        case (.movieCard, .main):
-            completion()
-            
+
         default:
-            fatalError("Impossible state update")
+            completion()
         }
     }
 }
-

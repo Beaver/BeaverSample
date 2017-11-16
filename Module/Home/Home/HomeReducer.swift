@@ -1,14 +1,16 @@
 import Beaver
 import Core
 
-public struct HomeReducer: ChildReducing {
+public struct HomeReducer: Beaver.ChildReducing {
     public typealias ActionType = HomeAction
     public typealias StateType = HomeState
-    
+
     public init() {
     }
 
-    public func handle(action: HomeAction, state: HomeState, completion: @escaping (HomeState) -> ()) -> HomeState {
+    public func handle(action: HomeAction,
+                       state: HomeState,
+                       completion: @escaping (HomeState) -> ()) -> HomeState {
         var newState = state
         
         newState.movies = (0...10).map {
@@ -19,18 +21,16 @@ public struct HomeReducer: ChildReducing {
         switch action {
         case HomeRoutingAction.start,
              HomeUIAction.didViewAppear:
-            newState.currentController = .main
+            newState.currentScreen = .main
             
         case HomeRoutingAction.stop:
-            newState.currentController = .none
+            newState.currentScreen = .none
             
         case HomeUIAction.didTapOnMovieCell(let id, let title):
-            newState.currentController = .movieCard(id: id, title: title)
-            
+            newState.currentScreen = .movieCard(id: id, title: title)
             
         default: break
         }
-        
         
         return newState
     }

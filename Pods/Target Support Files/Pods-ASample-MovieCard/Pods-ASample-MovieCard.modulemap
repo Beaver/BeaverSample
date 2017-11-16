@@ -1,6 +1,0 @@
-framework module Pods_ASample_MovieCard {
-  umbrella header "Pods-ASample-MovieCard-umbrella.h"
-
-  export *
-  module * { export * }
-}

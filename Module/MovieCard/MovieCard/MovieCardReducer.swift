@@ -1,10 +1,10 @@
 import Beaver
 import Core
 
-public struct MovieCardReducer: ChildReducing {
+public struct MovieCardReducer: Beaver.ChildReducing {
     public typealias ActionType = MovieCardAction
     public typealias StateType = MovieCardState
-    
+
     public init() {
     }
 
@@ -15,12 +15,15 @@ public struct MovieCardReducer: ChildReducing {
 
         switch action {
         case MovieCardRoutingAction.start(let id, let title):
-            newState.currentController = .main
-            newState.movie = MovieCardState.MovieState(id: id, title: title)
-        
-        default: break
+            newState.currentScreen = .main(id: id, title: title)
+
+        case MovieCardRoutingAction.stop:
+            newState.currentScreen = .none
+
+        default:
+            break
         }
-        
+
         return newState
     }
 }
