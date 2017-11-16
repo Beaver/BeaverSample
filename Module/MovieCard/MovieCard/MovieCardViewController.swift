@@ -5,6 +5,10 @@ import Core
 
 final class MovieCardViewController: Beaver.ViewController<MovieCardState, AppState> {
 
+    deinit {
+        dispatch(action: AppAction.stop(module: MovieCardRoutingAction.stop))
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,7 +20,7 @@ final class MovieCardViewController: Beaver.ViewController<MovieCardState, AppSt
 
         view.addSubview(label)
     }
-
+    
     override func stateDidUpdate(oldState: MovieCardState?,
                                  newState: MovieCardState,
                                  completion: @escaping () -> ()) {

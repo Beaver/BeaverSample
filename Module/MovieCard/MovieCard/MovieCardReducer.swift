@@ -14,8 +14,8 @@ public struct MovieCardReducer: Beaver.ChildReducing {
         var newState = state
 
         switch action {
-        case MovieCardRoutingAction.start:
-            newState.currentScreen = .main
+        case MovieCardRoutingAction.start(let id, let title):
+            newState.currentScreen = .main(id: id, title: title)
 
         case MovieCardRoutingAction.stop:
             newState.currentScreen = .none

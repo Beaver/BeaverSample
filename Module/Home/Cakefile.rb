@@ -7,7 +7,7 @@ def home_target()
         target.language = :swift
         target.include_files = ["Module/#{target.name}/#{target.name}/**/*.*"]
         target.exclude_files << "**/Info.plist"
-        target.linked_targets = [module_target(:core)]
+        target.linked_targets = [module_target(:core), module_target(:api)]
 
         unit_tests_for target do |test_target|
             test_target.name = "#{target.name}Tests"

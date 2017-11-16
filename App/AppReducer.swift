@@ -16,7 +16,7 @@ struct AppReducer: Beaver.Reducing {
 
         switch envelop.action {
         case AppAction.start(let startAction):
-            return handle(envelop: envelop.update(action: startAction), state: AppState(), completion: completion)
+            return handle(envelop: envelop.update(action: startAction), state: newState, completion: completion)
 
         case is HomeAction:
             newState.homeState = home.handle(envelop: envelop, state: state.homeState ?? HomeState()) { homeState in

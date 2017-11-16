@@ -12,18 +12,26 @@ public struct HomeReducer: Beaver.ChildReducing {
                        state: HomeState,
                        completion: @escaping (HomeState) -> ()) -> HomeState {
         var newState = state
-
+        
+        newState.movies = (0...10).map {
+            return HomeState.MovieState(id: $0,
+                                        title: "test \($0)")
+        }
+        
         switch action {
-        case HomeRoutingAction.start:
+        case HomeRoutingAction.start,
+             HomeUIAction.didViewAppear:
             newState.currentScreen = .main
-
+            
         case HomeRoutingAction.stop:
             newState.currentScreen = .none
-
-        default:
-            break
+            
+        case HomeUIAction.didTapOnMovieCell(let id, let title):
+            newState.currentScreen = .movieCard(id: id, title: title)
+            
+        default: break
         }
-
+        
         return newState
     }
 }

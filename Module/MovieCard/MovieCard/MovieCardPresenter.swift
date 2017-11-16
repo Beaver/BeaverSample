@@ -23,15 +23,11 @@ extension MovieCardPresenter {
 
         switch (oldState?.currentScreen ?? .none, newState.currentScreen) {
         case (.none, .main):
-            #if os(iOS)
             let movieCardController = MovieCardViewController(store: store)
             context.present(controller: movieCardController, completion: completion)
-            #endif
 
         case (.main, .none):
-            #if os(iOS)
             context.dismiss(completion: completion)
-            #endif
 
         default:
             completion()

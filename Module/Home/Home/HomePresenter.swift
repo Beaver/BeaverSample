@@ -23,15 +23,15 @@ extension HomePresenter {
 
         switch (oldState?.currentScreen ?? .none, newState.currentScreen) {
         case (.none, .main):
-            #if os(iOS)
             let homeController = HomeViewController(store: store)
             context.present(controller: homeController, completion: completion)
-            #endif
 
         case (.main, .none):
-            #if os(iOS)
             context.dismiss(completion: completion)
-            #endif
+        
+        case (.main, .movieCard(let id, let title)):
+            dispatch(AppAction.start(module: MovieCardRoutingAction.start(id: id, title: title)))
+            completion()
 
         default:
             completion()

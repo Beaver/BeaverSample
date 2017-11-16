@@ -1,13 +1,11 @@
 import Beaver
-
-public protocol HomeAction: Beaver.Action {
-}
-
-public enum HomeRoutingAction: HomeAction {
-    case start
-    case stop
-}
+import Core
 
 enum HomeUIAction: HomeAction {
     case finish
+    case didLoadView
+    case didPullToRefresh
+    case didScrollToBottom
+    case didViewAppear
+    case didTapOnMovieCell(id: Int, title: String)
 }

@@ -7,7 +7,7 @@ end
 def api_target
     target 'API' do
         
-        core_pods
+        api_pods
 
         target 'APITests' do
             inherit! :search_paths

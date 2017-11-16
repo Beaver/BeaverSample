@@ -2,8 +2,8 @@
 //  API.h
 //  API
 //
-//  Created by Théophane Rupin on 11/7/17.
-//  Copyright © 2017 Beaver. All rights reserved.
+//  Created by Theophane on 19/06/2017.
+//  Copyright © 2017 beaver. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
