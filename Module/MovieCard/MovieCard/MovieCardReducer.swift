@@ -19,6 +19,9 @@ public struct MovieCardReducer: Beaver.ChildReducing {
 
         case MovieCardRoutingAction.stop:
             newState.currentScreen = .none
+            
+        case MovieCardUIAction.finish:
+            newState.currentScreen = .none
 
         default:
             break

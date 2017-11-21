@@ -3,10 +3,10 @@ import Core
 
 #if os(iOS)
 
-final class MovieCardViewController: Beaver.ViewController<MovieCardState, AppState> {
+final class MovieCardViewController: Beaver.ViewController<MovieCardState, AppState, MovieCardUIAction> {
 
     deinit {
-        dispatch(action: AppAction.stop(module: MovieCardRoutingAction.stop))
+        dispatch(action: .finish)
     }
 
     override func viewDidLoad() {

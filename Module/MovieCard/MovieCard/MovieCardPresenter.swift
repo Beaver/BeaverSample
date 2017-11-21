@@ -27,7 +27,7 @@ extension MovieCardPresenter {
             context.present(controller: movieCardController, completion: completion)
 
         case (.main, .none):
-            context.dismiss(completion: completion)
+            dispatch(AppAction.stop(module: MovieCardRoutingAction.stop))
 
         default:
             completion()

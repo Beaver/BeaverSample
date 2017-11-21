@@ -1,7 +1,7 @@
 import Beaver
 import Core
 
-final class HomeViewController: Beaver.ViewController<HomeState, AppState> {
+final class HomeViewController: Beaver.ViewController<HomeState, AppState, HomeUIAction> {
     lazy private var tableView: UITableView = {
         let tableView = UITableView(frame: self.view.frame)
         tableView.delegate = self.dataSource
@@ -26,7 +26,7 @@ final class HomeViewController: Beaver.ViewController<HomeState, AppState> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        dispatch(action: HomeUIAction.didViewAppear)
+        dispatch(action: .didViewAppear)
     }
         
     override func stateDidUpdate(oldState: HomeState?,
