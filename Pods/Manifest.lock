@@ -1,10 +1,10 @@
 PODS:
-  - Alamofire (4.5.1)
+  - Alamofire (4.6.0)
   - AlamofireImage (3.3.0):
     - Alamofire (~> 4.5)
   - Beaver (0.1.0)
   - Marshal (1.2.4)
-  - Nimble (7.0.2)
+  - Nimble (7.0.3)
   - PromiseKit/Alamofire (4.5.0):
     - Alamofire (~> 4.0)
     - PromiseKit/CorePromise
@@ -26,15 +26,15 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Beaver:
-    :commit: 301d6c36c6a931459e8407a388b0bb6cc831b0e6
+    :commit: c1df572b346b072b7428501c8cef5a7e2bd584ee
     :git: https://github.com/Beaver/Beaver
 
 SPEC CHECKSUMS:
-  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
   Beaver: 84f7a1e4cc56ca0008db4c4685dbbec6e051f190
   Marshal: 8e04e6624e506921db7143b0bfd83caee03f32d6
-  Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
+  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   PromiseKit: 9c1d9f6d7b65e3951a90bea7f407c56972be5d8e
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
 

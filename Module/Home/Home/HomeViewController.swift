@@ -1,20 +1,14 @@
 import Beaver
 import Core
 
-final class HomeViewController: Beaver.ViewController<HomeState, AppState, HomeUIAction> {
+final class HomeViewController: Beaver.ViewController<HomeState, AppState, HomeUIAction>, UITableViewDataSource, UITableViewDelegate {
     lazy private var tableView: UITableView = {
         let tableView = UITableView(frame: self.view.frame)
-        tableView.delegate = self.dataSource
-        tableView.dataSource = self.dataSource
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.backgroundColor = .white
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return tableView
-    }()
-    
-    private lazy var dataSource: HomeViewControllerDataSource = {
-        let dataSource = HomeViewControllerDataSource()
-        dataSource.weakController = self
-        return dataSource
     }()
     
     override func viewDidLoad() {
@@ -37,20 +31,9 @@ final class HomeViewController: Beaver.ViewController<HomeState, AppState, HomeU
         }
         completion()
     }
-}
 
-private final class HomeViewControllerDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
-    weak var weakController: HomeViewController?
-    
-    var controller: HomeViewController {
-        guard let controller = weakController else {
-            fatalError("HomeViewController has been released to soon")
-        }
-        return controller
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return controller.state.movies?.count ?? 0
+        return state.movies?.count ?? 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -60,19 +43,19 @@ private final class HomeViewControllerDataSource: NSObject, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = controller.state.movies?[indexPath.row].title
+        cell.textLabel?.text = state.movies?[indexPath.row].title
         
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let movies = controller.state.movies else {
+        guard let movies = state.movies else {
             fatalError("Can't select a movie if state doens't have any movie")
         }
         
         let movie = movies[indexPath.row]
         
-        controller.dispatch(action: HomeUIAction.didTapOnMovieCell(id: movie.id,
-                                                                   title: movie.title))
+        dispatch(action: HomeUIAction.didTapOnMovieCell(id: movie.id,
+                                                        title: movie.title))
     }
 }

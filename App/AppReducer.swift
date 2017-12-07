@@ -14,29 +14,30 @@ struct AppReducer: Beaver.Reducing {
                 completion: @escaping (AppState) -> ()) -> AppState {
         var newState = state
 
-        switch envelop.action {
-        case AppAction.start(let startAction):
+        if case AppAction.start(let startAction) = envelop.action {
             return handle(envelop: envelop.update(action: startAction), state: newState, completion: completion)
+        }
 
-        case is HomeAction:
+        if envelop.action is HomeAction {
             newState.homeState = home.handle(envelop: envelop, state: state.homeState ?? HomeState()) { homeState in
                 newState.homeState = homeState
                 completion(newState)
             }
-
-        case AppAction.stop(module: HomeRoutingAction.stop):
+        }
+        
+        if case AppAction.stop(module: HomeRoutingAction.stop) = envelop.action {
             newState.homeState = nil
+        }
 
-        case is MovieCardAction:
+        if envelop.action is MovieCardAction {
             newState.movieCardState = movieCard.handle(envelop: envelop, state: state.movieCardState ?? MovieCardState()) { movieCardState in
                 newState.movieCardState = movieCardState
                 completion(newState)
             }
-
-        case AppAction.stop(module: MovieCardRoutingAction.stop):
+        }
+        
+        if case AppAction.stop(module: MovieCardRoutingAction.stop) = envelop.action {
             newState.movieCardState = nil
-
-        default: break
         }
 
         return newState

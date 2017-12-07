@@ -18,18 +18,22 @@ public struct HomeReducer: Beaver.ChildReducing {
                                         title: "test \($0)")
         }
         
-        switch action {
-        case HomeRoutingAction.start,
-             HomeUIAction.didViewAppear:
+        switch ExhaustiveAction<HomeRoutingAction, HomeUIAction>(action) {
+        case .routing(.start),
+             .ui(.didViewAppear):
             newState.currentScreen = .main
             
-        case HomeRoutingAction.stop:
+        case .routing(.stop),
+             .ui(.finish):
             newState.currentScreen = .none
             
-        case HomeUIAction.didTapOnMovieCell(let id, let title):
+        case .ui(.didTapOnMovieCell(let id, let title)):
             newState.currentScreen = .movieCard(id: id, title: title)
-            
-        default: break
+
+        case .ui(.didLoadView),
+             .ui(.didPullToRefresh),
+             .ui(.didScrollToBottom):
+            break
         }
         
         return newState
